@@ -29,11 +29,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <h3 className="text-base font-bold text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-1">
             {project.title}
           </h3>
-          <p className="text-slate-400 text-xs mb-4 line-clamp-1 leading-relaxed">
+          <p className="text-slate-400 text-xs mb-3 line-clamp-1 leading-relaxed">
             {project.description}
           </p>
           
-          <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.languages && project.languages.length > 0 && (
+            <div className="mb-3 pb-3 border-b border-slate-700">
+              <p className="text-[9px] font-bold text-blue-400 uppercase tracking-widest mb-1">Languages</p>
+              <div className="flex flex-wrap gap-1">
+                {project.languages.map(lang => (
+                  <span key={lang} className="px-2 py-0.5 text-[7px] font-semibold bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30">
+                    {lang}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          <div className="flex flex-wrap gap-1.5">
             {project.skills.slice(0, 2).map(skill => (
               <span key={skill} className="px-2 py-0.5 text-[7px] font-medium bg-slate-800 text-slate-400 rounded-full border border-slate-700 group-hover:border-blue-500/30 transition-colors">
                 {skill}

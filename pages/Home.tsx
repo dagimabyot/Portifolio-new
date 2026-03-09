@@ -63,7 +63,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 
       {/* Featured Projects Grid */}
       <section className="px-8 sm:px-12 lg:px-16">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
               <span className="text-blue-500 font-bold text-sm uppercase tracking-widest mb-3 block">Selected Works</span>
@@ -74,7 +74,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
             </a>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-6">
             {featuredProjects.slice(0, 2).map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}
