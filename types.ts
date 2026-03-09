@@ -13,6 +13,7 @@ export interface Project {
   category: ProjectCategory;
   imageUrl: string;
   skills: string[];
+  languages?: string[];
   link?: string;
   github?: string;
   featured: boolean;
