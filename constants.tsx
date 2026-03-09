@@ -5,57 +5,42 @@ export const INITIAL_DATA: PortfolioData = {
   projects: [
     {
       id: '1',
-      title: 'Console Project',
-      description: 'A modern console application with interactive features and real-time updates.',
-      category: ProjectCategory.WEB,
-      imageUrl: 'https://picsum.photos/seed/console/800/600',
-      skills: ['React', 'TypeScript', 'Tailwind CSS'],
-      languages: ['TypeScript', 'JavaScript'],
-      featured: true,
-      github: 'https://github.com/dagimabyot/console-project'
-    },
-    {
-      id: '2',
       title: 'Global E-Commerce Platform',
       description: 'A high-performance e-commerce solution with real-time inventory management, global payment integration, and an advanced admin dashboard.',
       category: ProjectCategory.WEB,
       imageUrl: 'https://picsum.photos/seed/ecommerce/800/600',
       skills: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
-      languages: ['JavaScript', 'Node.js'],
       featured: true,
       github: 'https://github.com/dagimabyot/ecommerce-platform'
     },
     {
-      id: '3',
+      id: '2',
       title: 'AI-Powered Content Engine',
       description: 'An intelligent platform that leverages Large Language Models to generate, optimize, and schedule social media content for brands.',
       category: ProjectCategory.AI,
       imageUrl: 'https://picsum.photos/seed/ai-content/800/600',
       skills: ['Python', 'Gemini API', 'FastAPI', 'Next.js', 'Redis'],
-      languages: ['Python', 'JavaScript'],
       featured: true,
       link: 'https://ai-content-demo.example.com',
       github: 'https://github.com/dagimabyot/ai-content-engine'
     },
     {
-      id: '4',
+      id: '3',
       title: 'Real-time Collaboration Tool',
       description: 'A workspace for teams to collaborate on documents and projects in real-time, featuring live cursors and instant notifications.',
       category: ProjectCategory.WEB,
       imageUrl: 'https://picsum.photos/seed/collab/800/600',
       skills: ['TypeScript', 'Socket.io', 'Express', 'React', 'MongoDB'],
-      languages: ['TypeScript', 'JavaScript'],
       featured: true,
       github: 'https://github.com/dagimabyot/collab-tool'
     },
     {
-      id: '5',
+      id: '4',
       title: 'Fitness Tracking Mobile App',
       description: 'A comprehensive mobile application for tracking workouts, nutrition, and health metrics with personalized insights.',
       category: ProjectCategory.MOBILE,
       imageUrl: 'https://picsum.photos/seed/fitness/800/600',
       skills: ['React Native', 'Firebase', 'Redux', 'Expo'],
-      languages: ['JavaScript', 'TypeScript'],
       featured: false,
       link: 'https://fitness-app.example.com'
     }

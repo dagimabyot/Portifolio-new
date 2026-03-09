@@ -38,17 +38,17 @@ const Home: React.FC<HomeProps> = ({ data }) => {
             </div>
           </div>
           
-          <div className="flex-1 relative perspective-1000 z-0 group">
-            <div className="relative w-full max-w-sm mx-auto preserve-3d transition-all duration-700 group-hover:scale-105">
-              <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-[100px] -z-10 group-hover:blur-[120px] transition-all duration-700"></div>
-              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group-hover:-rotate-2 transition-transform duration-700 shadow-lg hover:shadow-2xl hover:shadow-blue-500/20">
+          <div className="flex-1 relative perspective-1000 z-0">
+            <div className="relative w-full max-w-sm mx-auto preserve-3d transition-transform duration-700 hover:rotate-y-12 hover:rotate-x-6">
+              <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-[100px] -z-10"></div>
+              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group">
                 <img 
                   src="https://picsum.photos/seed/dagim/500/650" 
                   alt={data.settings.name} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 p-5 glass rounded-2xl border border-blue-500/30 shadow-2xl group-hover:scale-110 transition-transform duration-500">
+              <div className="absolute -bottom-6 -right-6 p-5 glass rounded-2xl border border-blue-500/30 shadow-2xl">
                  <div className="text-blue-400 font-black text-xl">2+</div>
                  <div className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Years Experience</div>
               </div>
@@ -63,7 +63,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 
       {/* Featured Projects Grid */}
       <section className="px-8 sm:px-12 lg:px-16">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
               <span className="text-blue-500 font-bold text-sm uppercase tracking-widest mb-3 block">Selected Works</span>
@@ -74,7 +74,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
             </a>
           </div>
           
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredProjects.slice(0, 2).map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}
