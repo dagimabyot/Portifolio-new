@@ -9,6 +9,7 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import Console from './pages/Console';
 
 const App: React.FC = () => {
   const [data, setData] = useState<PortfolioData>(() => {
@@ -85,6 +86,9 @@ const App: React.FC = () => {
     }
     if (path.includes('contact')) {
       return <Contact data={data} onContactSubmit={addLead} />;
+    }
+    if (path.includes('console')) {
+      return <Console data={data} />;
     }
     if (path.includes('admin')) {
       return (
