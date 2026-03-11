@@ -12,8 +12,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
   return (
     <>
-      <div className="perspective-1000 group cursor-pointer" onClick={() => setShowDetails(true)}>
-      <div className="relative bg-slate-900/50 rounded-3xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-500 preserve-3d card-3d flex flex-col h-full group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+      <div className="perspective-1000 group">
+      <div className="relative bg-slate-900/50 rounded-3xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-500 preserve-3d card-3d flex flex-col h-full group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] cursor-pointer" onClick={() => setShowDetails(true)}>
         <div className="relative h-60 overflow-hidden">
           <img 
             src={project.imageUrl} 
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           )}
           
           <div className="mt-auto pt-6 border-t border-slate-800 flex items-center justify-between">
-            <div className="flex space-x-3">
+            <div className="flex space-x-3" onClick={(e) => e.stopPropagation()}>
               {project.link && (
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors p-2 bg-blue-500/10 rounded-lg hover:bg-blue-500/20" title="View Live Demo">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
