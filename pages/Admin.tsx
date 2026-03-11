@@ -525,20 +525,20 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                     />
                   </div>
 
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Results / Impact</label>
-                    <textarea
-                      placeholder="What were the measurable results?"
-                      rows={3}
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
-                      value={newProject.results}
-                      onChange={e => setNewProject({...newProject, results: e.target.value})}
-                    />
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Results / Impact</label>
+                      <textarea
+                        placeholder="What were the measurable results?"
+                        rows={3}
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
+                        value={newProject.results}
+                        onChange={e => setNewProject({...newProject, results: e.target.value})}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                {/* Submit Section - Full Width */}
-                <div className="lg:col-span-2 flex gap-4 items-center">
+                  {/* Submit Section - Full Width */}
+                  <div className="lg:col-span-2 flex gap-4 items-center">
                   <div className="flex items-center p-4 bg-slate-800/30 rounded-2xl border border-slate-800 flex-1">
                     <div className="relative inline-block w-12 mr-4 align-middle select-none transition duration-200 ease-in">
                       <input 
@@ -553,14 +553,14 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                     <label htmlFor="featured" className="text-sm font-bold text-slate-300 uppercase tracking-widest">Pin to Highlights</label>
                   </div>
 
-                  <button
-                    type="submit"
-                    className="px-10 py-4 bg-white text-slate-950 font-black uppercase tracking-widest rounded-2xl hover:bg-blue-50 transition-all duration-300 transform active:scale-95"
-                  >
-                    Save Project
-                  </button>
-                </div>
-              </form>
+                    <button
+                      type="submit"
+                      className="px-10 py-4 bg-white text-slate-950 font-black uppercase tracking-widest rounded-2xl hover:bg-blue-50 transition-all duration-300 transform active:scale-95"
+                    >
+                      Save Project
+                    </button>
+                  </div>
+                </form>
             </div>
 
             <div className="space-y-6">
