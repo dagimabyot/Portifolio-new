@@ -12,7 +12,9 @@ export const INITIAL_DATA: PortfolioData = {
       skills: ['React', 'TypeScript', 'Tailwind CSS'],
       languages: ['TypeScript', 'JavaScript'],
       featured: true,
-      github: 'https://github.com/dagimabyot/console-project'
+      github: 'https://github.com/dagimabyot/console-project',
+      link: 'https://console-project-demo.vercel.app',
+      moreDetails: 'Built with React 18 and TypeScript, this project showcases modern web development practices with a responsive design and interactive UI components. Features real-time data synchronization and advanced state management.'
     },
     {
       id: '2',
@@ -21,9 +23,11 @@ export const INITIAL_DATA: PortfolioData = {
       category: ProjectCategory.WEB,
       imageUrl: 'https://picsum.photos/seed/ecommerce/800/600',
       skills: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
-      languages: ['JavaScript', 'Node.js'],
+      languages: ['JavaScript', 'TypeScript', 'SQL'],
       featured: true,
-      github: 'https://github.com/dagimabyot/ecommerce-platform'
+      github: 'https://github.com/dagimabyot/ecommerce-platform',
+      link: 'https://ecommerce-platform-demo.vercel.app',
+      moreDetails: 'Full-stack e-commerce platform with integrated Stripe payments, real-time inventory tracking, and a comprehensive admin dashboard. Features multi-currency support and advanced search capabilities.'
     },
     {
       id: '3',
@@ -32,10 +36,11 @@ export const INITIAL_DATA: PortfolioData = {
       category: ProjectCategory.AI,
       imageUrl: 'https://picsum.photos/seed/ai-content/800/600',
       skills: ['Python', 'Gemini API', 'FastAPI', 'Next.js', 'Redis'],
-      languages: ['Python', 'JavaScript'],
+      languages: ['Python', 'JavaScript', 'TypeScript'],
       featured: true,
       link: 'https://ai-content-demo.example.com',
-      github: 'https://github.com/dagimabyot/ai-content-engine'
+      github: 'https://github.com/dagimabyot/ai-content-engine',
+      moreDetails: 'Leverages Google Gemini API to intelligently generate and optimize social media content. Features content scheduling, analytics integration, and brand-aware content generation with Redis caching.'
     },
     {
       id: '4',
@@ -46,17 +51,22 @@ export const INITIAL_DATA: PortfolioData = {
       skills: ['TypeScript', 'Socket.io', 'Express', 'React', 'MongoDB'],
       languages: ['TypeScript', 'JavaScript'],
       featured: true,
-      github: 'https://github.com/dagimabyot/collab-tool'
+      github: 'https://github.com/dagimabyot/collab-tool',
+      link: 'https://collab-tool-demo.vercel.app',
+      moreDetails: 'Real-time collaboration platform powered by Socket.io with live cursor tracking, document synchronization, and instant notifications. Supports team workspaces and permission-based access control.'
     },
     {
-      id: '4',
+      id: '5',
       title: 'Fitness Tracking Mobile App',
       description: 'A comprehensive mobile application for tracking workouts, nutrition, and health metrics with personalized insights.',
       category: ProjectCategory.MOBILE,
       imageUrl: 'https://picsum.photos/seed/fitness/800/600',
       skills: ['React Native', 'Firebase', 'Redux', 'Expo'],
+      languages: ['JavaScript', 'TypeScript'],
       featured: false,
-      link: 'https://fitness-app.example.com'
+      link: 'https://fitness-app.example.com',
+      github: 'https://github.com/dagimabyot/fitness-app',
+      moreDetails: 'Cross-platform mobile app built with React Native and Expo. Features real-time workout tracking, personalized nutrition plans, health metrics analysis, and social sharing capabilities with Firebase backend.'
     }
   ],
   testimonials: [

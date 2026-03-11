@@ -16,6 +16,7 @@ export interface Project {
   languages?: string[];
   link?: string;
   github?: string;
+  moreDetails?: string;
   featured: boolean;
 }
 
