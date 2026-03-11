@@ -6,18 +6,30 @@ export enum ProjectCategory {
   AI = 'AI/ML'
 }
 
+export type ProjectStatus = 'Completed' | 'In Progress' | 'Planned';
+
 export interface Project {
   id: string;
   title: string;
   description: string;
+  detailedDescription?: string;
   category: ProjectCategory;
   imageUrl: string;
   skills: string[];
   languages?: string[];
   link?: string;
   github?: string;
+  caseStudyLink?: string;
   moreDetails?: string;
   featured: boolean;
+  status?: ProjectStatus;
+  startDate?: string;
+  endDate?: string;
+  role?: string;
+  keyFeatures?: string[];
+  challenges?: string;
+  solutions?: string;
+  results?: string;
 }
 
 export interface Testimonial {

@@ -1,14 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Project } from '../types';
+import ProjectDetails from './ProjectDetails';
 
 interface ProjectCardProps {
   project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
-    <div className="perspective-1000 group">
+    <>
+      <div className="perspective-1000 group cursor-pointer" onClick={() => setShowDetails(true)}>
       <div className="relative bg-slate-900/50 rounded-3xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-500 preserve-3d card-3d flex flex-col h-full group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
         <div className="relative h-60 overflow-hidden">
           <img 
@@ -83,6 +87,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
       </div>
     </div>
+      {showDetails && <ProjectDetails project={project} onClose={() => setShowDetails(false)} />}
+    </>
   );
 };
 
