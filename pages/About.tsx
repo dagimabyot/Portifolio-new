@@ -26,15 +26,17 @@ const About: React.FC<AboutProps> = ({ data }) => {
             </h1>
           </div>
           
-          <div className="space-y-6 text-xl text-slate-400 leading-relaxed font-medium">
-            <p className="text-white font-bold text-2xl border-l-4 border-blue-500 pl-6 bg-blue-500/5 py-4 rounded-r-2xl">
+          <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+            <div className="text-white font-bold text-xl border-l-4 border-blue-500 pl-6 bg-gradient-to-r from-blue-500/10 to-transparent py-4 rounded-r-2xl">
               {data.settings.bio}
+            </div>
+            <p className="relative">
+              <span className="absolute -left-4 top-0 text-blue-500 text-2xl">▸</span>
+              <span className="ml-2">My journey in software development is fueled by a desire to build tools that make a difference. With 2+ years of dedicated experience, I've mastered the balance between aesthetic appeal and functional robustness.</span>
             </p>
-            <p>
-              My journey in software development is fueled by a desire to build tools that make a difference. With 2+ years of dedicated experience, I've mastered the balance between aesthetic appeal and functional robustness.
-            </p>
-            <p>
-              I take pride in writing clean, maintainable code and staying ahead of the curve with modern frameworks. Whether it's a responsive landing page or a complex full-stack application, I bring 100% commitment to every line of code.
+            <p className="relative">
+              <span className="absolute -left-4 top-0 text-blue-500 text-2xl">▸</span>
+              <span className="ml-2">I take pride in writing clean, maintainable code and staying ahead of the curve with modern frameworks. Whether it's a responsive landing page or a complex full-stack application, I bring 100% commitment to every line of code.</span>
             </p>
           </div>
 
@@ -60,17 +62,17 @@ const About: React.FC<AboutProps> = ({ data }) => {
           </div>
         </div>
         
-        <div className="order-1 lg:order-2 relative perspective-1000">
-          <div className="relative aspect-[4/5] bg-slate-900 rounded-[3rem] overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d">
+        <div className="order-1 lg:order-2 relative perspective-1000 flex justify-center">
+          <div className="relative w-64 lg:w-72 aspect-[3/4] bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d">
             <img 
-              src="https://picsum.photos/seed/dagim_about/1000/1250" 
+              src="https://picsum.photos/seed/dagim_about/600/800" 
               alt="Dagim Abyot" 
-              className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-105" 
+              className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
           </div>
-          <div className="absolute -top-12 -right-12 w-48 h-48 bg-blue-500/10 rounded-full blur-[80px] -z-10 animate-pulse"></div>
-          <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-slate-800/40 rounded-full blur-[100px] -z-10"></div>
+          <div className="absolute -top-8 -right-8 w-40 h-40 bg-blue-500/10 rounded-full blur-[80px] -z-10 animate-pulse"></div>
+          <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-slate-800/40 rounded-full blur-[100px] -z-10"></div>
         </div>
       </div>
 
