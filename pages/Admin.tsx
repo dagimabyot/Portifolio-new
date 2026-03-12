@@ -143,10 +143,10 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                <span className="w-2 h-6 bg-blue-600 rounded-full mr-4"></span>
                Configuration
             </h2>
-            <form onSubmit={saveSettings} className="space-y-10 max-w-3xl">
+            <form onSubmit={saveSettings} className="space-y-8 max-w-3xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Identity Name</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Identity Name</label>
                   <input
                     type="text"
                     className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -155,7 +155,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                   />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Brand Signature</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Brand Signature</label>
                   <input
                     type="text"
                     className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -165,7 +165,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                 </div>
               </div>
               <div className="space-y-3">
-                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Primary Headline</label>
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Primary Headline</label>
                 <input
                   type="text"
                   className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -175,7 +175,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Primary Email</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Primary Email</label>
                   <input
                     type="email"
                     className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -184,7 +184,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                   />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Phone Number</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Phone Number</label>
                   <input
                     type="text"
                     className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -350,30 +350,44 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Languages Used</label>
                     <div className="flex gap-2 mb-2">
-                      <input
-                        placeholder="Add language"
-                        className="flex-1 px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
+                      <select
+                        className="flex-1 px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
                         value={languageInput}
-                        onChange={e => setLanguageInput(e.target.value)}
-                        onKeyPress={e => {
-                          if (e.key === 'Enter') {
-                            e.preventDefault();
-                            if (languageInput.trim()) {
-                              setNewProject({...newProject, languages: [...(newProject.languages || []), languageInput.trim()]});
-                              setLanguageInput('');
-                            }
+                        onChange={e => {
+                          if (e.target.value && !newProject.languages?.includes(e.target.value)) {
+                            setNewProject({...newProject, languages: [...(newProject.languages || []), e.target.value]});
                           }
+                          setLanguageInput('');
                         }}
-                      />
+                      >
+                        <option value="">Select a language</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                        <option value="C#">C#</option>
+                        <option value="Go">Go</option>
+                        <option value="Rust">Rust</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Swift">Swift</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="SQL">SQL</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="Sass/SCSS">Sass/SCSS</option>
+                      </select>
                       <button
                         type="button"
                         onClick={() => {
-                          if (languageInput.trim()) {
-                            setNewProject({...newProject, languages: [...(newProject.languages || []), languageInput.trim()]});
+                          if (languageInput && !newProject.languages?.includes(languageInput)) {
+                            setNewProject({...newProject, languages: [...(newProject.languages || []), languageInput]});
                             setLanguageInput('');
                           }
                         }}
                         className="px-4 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-500 text-sm font-bold"
+                        disabled={!languageInput}
                       >
                         Add
                       </button>
