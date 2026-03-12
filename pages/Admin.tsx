@@ -310,7 +310,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Technologies/Skills</label>
                     <div className="relative">
                       <input
-                        placeholder="Type to search skills..."
+                        placeholder="Type to search or add skill..."
                         className="w-full px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
                         value={skillInput}
                         onChange={e => setSkillInput(e.target.value)}
@@ -325,31 +325,22 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                         }}
                       />
                       {skillInput && (
-                        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-2xl z-50 max-h-48 overflow-y-auto">
-                          {(() => {
-                            const skillsList = ['React', 'Vue', 'Angular', 'Next.js', 'Nuxt', 'Node.js', 'Express', 'Django', 'Flask', 'FastAPI', 'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'AWS', 'Docker', 'Kubernetes', 'Git', 'REST API', 'GraphQL', 'WebSocket', 'Tailwind CSS', 'Bootstrap', 'Material UI'];
-                            const filtered = skillsList.filter(skill => 
-                              skill.toLowerCase().includes(skillInput.toLowerCase()) && 
-                              !newProject.skills?.includes(skill)
-                            );
-                            return filtered.length === 0 ? (
-                              <div className="px-6 py-2 text-slate-500 text-sm">No skills found</div>
-                            ) : (
-                              filtered.map((skill, idx) => (
-                                <button
-                                  key={idx}
-                                  type="button"
-                                  onClick={() => {
-                                    setNewProject({...newProject, skills: [...(newProject.skills || []), skill]});
-                                    setSkillInput('');
-                                  }}
-                                  className="w-full px-6 py-2 text-left text-white hover:bg-blue-600 transition-colors text-sm border-b border-slate-700 last:border-b-0"
-                                >
-                                  {skill}
-                                </button>
-                              ))
-                            );
-                          })()}
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-2xl z-50 max-h-48 overflow-y-auto shadow-lg">
+                          {['React', 'Vue', 'Angular', 'Next.js', 'Nuxt', 'Node.js', 'Express', 'Django', 'Flask', 'FastAPI', 'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'AWS', 'Docker', 'Kubernetes', 'Git', 'REST API', 'GraphQL', 'WebSocket', 'Tailwind CSS', 'Bootstrap', 'Material UI']
+                            .filter(skill => skill.toLowerCase().includes(skillInput.toLowerCase()) && !newProject.skills?.includes(skill))
+                            .map((skill) => (
+                              <button
+                                key={skill}
+                                type="button"
+                                onClick={() => {
+                                  setNewProject({...newProject, skills: [...(newProject.skills || []), skill]});
+                                  setSkillInput('');
+                                }}
+                                className="w-full px-6 py-2 text-left text-white hover:bg-blue-600 transition-colors text-sm border-b border-slate-700 last:border-b-0"
+                              >
+                                {skill}
+                              </button>
+                            ))}
                         </div>
                       )}
                     </div>
@@ -367,7 +358,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Languages Used</label>
                     <div className="relative">
                       <input
-                        placeholder="Type to search languages..."
+                        placeholder="Type to search or add language..."
                         className="w-full px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
                         value={languageInput}
                         onChange={e => setLanguageInput(e.target.value)}
@@ -382,31 +373,22 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                         }}
                       />
                       {languageInput && (
-                        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-2xl z-50 max-h-48 overflow-y-auto">
-                          {(() => {
-                            const langsList = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#', 'Go', 'Rust', 'PHP', 'Ruby', 'Swift', 'Kotlin', 'SQL', 'HTML', 'CSS', 'Sass/SCSS'];
-                            const filtered = langsList.filter(lang => 
-                              lang.toLowerCase().includes(languageInput.toLowerCase()) && 
-                              !newProject.languages?.includes(lang)
-                            );
-                            return filtered.length === 0 ? (
-                              <div className="px-6 py-2 text-slate-500 text-sm">No languages found</div>
-                            ) : (
-                              filtered.map((lang, idx) => (
-                                <button
-                                  key={idx}
-                                  type="button"
-                                  onClick={() => {
-                                    setNewProject({...newProject, languages: [...(newProject.languages || []), lang]});
-                                    setLanguageInput('');
-                                  }}
-                                  className="w-full px-6 py-2 text-left text-white hover:bg-blue-600 transition-colors text-sm border-b border-slate-700 last:border-b-0"
-                                >
-                                  {lang}
-                                </button>
-                              ))
-                            );
-                          })()}
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-2xl z-50 max-h-48 overflow-y-auto shadow-lg">
+                          {['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#', 'Go', 'Rust', 'PHP', 'Ruby', 'Swift', 'Kotlin', 'SQL', 'HTML', 'CSS', 'Sass/SCSS']
+                            .filter(lang => lang.toLowerCase().includes(languageInput.toLowerCase()) && !newProject.languages?.includes(lang))
+                            .map((lang) => (
+                              <button
+                                key={lang}
+                                type="button"
+                                onClick={() => {
+                                  setNewProject({...newProject, languages: [...(newProject.languages || []), lang]});
+                                  setLanguageInput('');
+                                }}
+                                className="w-full px-6 py-2 text-left text-white hover:bg-blue-600 transition-colors text-sm border-b border-slate-700 last:border-b-0"
+                              >
+                                {lang}
+                              </button>
+                            ))}
                         </div>
                       )}
                     </div>
