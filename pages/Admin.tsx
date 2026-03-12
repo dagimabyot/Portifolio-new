@@ -230,11 +230,12 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                Asset Management
             </h2>
             
-            <div className="bg-slate-950/50 p-10 rounded-[2.5rem] mb-16 border border-slate-800 max-h-[80vh] overflow-y-auto">
+            <div className="bg-slate-950/50 p-10 rounded-[2.5rem] mb-16 border border-slate-800">
               <h3 className="font-bold text-white mb-10 uppercase tracking-widest text-sm">Deploy New Asset</h3>
-              <form onSubmit={handleAddProject} className="space-y-8">
-                {/* Basic Info */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <form onSubmit={handleAddProject} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                {/* LEFT COLUMN */}
+                <div className="space-y-8">
+                  {/* Basic Info */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Project Title</label>
                     <input
@@ -244,6 +245,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       onChange={e => setNewProject({...newProject, title: e.target.value})}
                     />
                   </div>
+
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Project Category</label>
                     <select
@@ -256,56 +258,54 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       ))}
                     </select>
                   </div>
-                </div>
 
-                {/* Short Description */}
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Short Description</label>
-                  <textarea
-                    placeholder="Brief description of the project..."
-                    rows={3}
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
-                    value={newProject.description}
-                    onChange={e => setNewProject({...newProject, description: e.target.value})}
-                  />
-                </div>
-
-                {/* Detailed Description */}
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Detailed Description (About)</label>
-                    <button 
-                      type="button" 
-                      onClick={handleAiProjectDesc}
-                      disabled={isAiLoading}
-                      className="text-[10px] font-bold text-blue-500 flex items-center hover:underline disabled:opacity-50 uppercase tracking-widest"
-                    >
-                      <svg className={`w-3 h-3 mr-2 ${isAiLoading ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                      Draft with AI
-                    </button>
+                  {/* Short Description */}
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Short Description</label>
+                    <textarea
+                      placeholder="Brief description of the project..."
+                      rows={3}
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
+                      value={newProject.description}
+                      onChange={e => setNewProject({...newProject, description: e.target.value})}
+                    />
                   </div>
-                  <textarea
-                    placeholder="Provide comprehensive project details..."
-                    rows={4}
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
-                    value={newProject.detailedDescription}
-                    onChange={e => setNewProject({...newProject, detailedDescription: e.target.value})}
-                  />
-                </div>
 
-                {/* Cover Image */}
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Project Cover Image URL</label>
-                  <input
-                    placeholder="https://picsum.photos/800/600"
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700"
-                    value={newProject.imageUrl}
-                    onChange={e => setNewProject({...newProject, imageUrl: e.target.value})}
-                  />
-                </div>
+                  {/* Detailed Description */}
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Detailed Description (About)</label>
+                      <button 
+                        type="button" 
+                        onClick={handleAiProjectDesc}
+                        disabled={isAiLoading}
+                        className="text-[10px] font-bold text-blue-500 flex items-center hover:underline disabled:opacity-50 uppercase tracking-widest"
+                      >
+                        <svg className={`w-3 h-3 mr-2 ${isAiLoading ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        Draft with AI
+                      </button>
+                    </div>
+                    <textarea
+                      placeholder="Provide comprehensive project details..."
+                      rows={4}
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
+                      value={newProject.detailedDescription}
+                      onChange={e => setNewProject({...newProject, detailedDescription: e.target.value})}
+                    />
+                  </div>
 
-                {/* Technologies/Languages */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Cover Image */}
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Project Cover Image URL</label>
+                    <input
+                      placeholder="https://picsum.photos/800/600"
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700"
+                      value={newProject.imageUrl}
+                      onChange={e => setNewProject({...newProject, imageUrl: e.target.value})}
+                    />
+                  </div>
+
+                  {/* Technologies/Languages */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Technologies/Skills</label>
                     <div className="flex gap-2 mb-2">
@@ -387,10 +387,37 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       ))}
                     </div>
                   </div>
+
+                  {/* Your Role */}
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Your Role in Project</label>
+                    <input
+                      placeholder="e.g. Full-Stack Developer, Lead Designer"
+                      className="w-full px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700"
+                      value={newProject.role}
+                      onChange={e => setNewProject({...newProject, role: e.target.value})}
+                    />
+                  </div>
+
+                  {/* Featured Toggle */}
+                  <div className="flex items-center p-6 bg-slate-800/30 rounded-2xl border border-slate-800">
+                    <div className="relative inline-block w-12 mr-4 align-middle select-none transition duration-200 ease-in">
+                      <input 
+                        type="checkbox" 
+                        id="featured" 
+                        className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-slate-700 border-4 border-slate-950 appearance-none cursor-pointer"
+                        checked={newProject.featured}
+                        onChange={e => setNewProject({...newProject, featured: e.target.checked})}
+                      />
+                      <label htmlFor="featured" className="toggle-label block overflow-hidden h-6 rounded-full bg-slate-800 cursor-pointer"></label>
+                    </div>
+                    <label htmlFor="featured" className="text-sm font-bold text-slate-300 uppercase tracking-widest">Pin to Highlights</label>
+                  </div>
                 </div>
 
-                {/* Links */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* RIGHT COLUMN */}
+                <div className="space-y-8">
+                  {/* Links */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Live Demo (Optional)</label>
                     <input
@@ -400,6 +427,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       onChange={e => setNewProject({...newProject, link: e.target.value})}
                     />
                   </div>
+
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">GitHub (Optional)</label>
                     <input
@@ -409,6 +437,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       onChange={e => setNewProject({...newProject, github: e.target.value})}
                     />
                   </div>
+
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Case Study (Optional)</label>
                     <input
@@ -418,10 +447,8 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       onChange={e => setNewProject({...newProject, caseStudyLink: e.target.value})}
                     />
                   </div>
-                </div>
 
-                {/* Status & Dates */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Status & Dates */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Status</label>
                     <select
@@ -434,6 +461,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       <option value="Planned">Planned</option>
                     </select>
                   </div>
+
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Start Date</label>
                     <input
@@ -443,6 +471,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       onChange={e => setNewProject({...newProject, startDate: e.target.value})}
                     />
                   </div>
+
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">End Date (Optional)</label>
                     <input
@@ -452,119 +481,93 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                       onChange={e => setNewProject({...newProject, endDate: e.target.value})}
                     />
                   </div>
-                </div>
 
-                {/* Role */}
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Your Role in Project</label>
-                  <input
-                    placeholder="e.g. Full-Stack Developer, Lead Designer"
-                    className="w-full px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700"
-                    value={newProject.role}
-                    onChange={e => setNewProject({...newProject, role: e.target.value})}
-                  />
-                </div>
-
-                {/* Key Features */}
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Key Features</label>
-                  <div className="flex gap-2 mb-2">
-                    <input
-                      placeholder="Add a key feature"
-                      className="flex-1 px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
-                      value={featureInput}
-                      onChange={e => setFeatureInput(e.target.value)}
-                      onKeyPress={e => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault();
+                  {/* Key Features */}
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Key Features</label>
+                    <div className="flex gap-2 mb-2">
+                      <input
+                        placeholder="Add a key feature"
+                        className="flex-1 px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
+                        value={featureInput}
+                        onChange={e => setFeatureInput(e.target.value)}
+                        onKeyPress={e => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault();
+                            if (featureInput.trim()) {
+                              setNewProject({...newProject, keyFeatures: [...(newProject.keyFeatures || []), featureInput.trim()]});
+                              setFeatureInput('');
+                            }
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
                           if (featureInput.trim()) {
                             setNewProject({...newProject, keyFeatures: [...(newProject.keyFeatures || []), featureInput.trim()]});
                             setFeatureInput('');
                           }
-                        }
-                      }}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (featureInput.trim()) {
-                          setNewProject({...newProject, keyFeatures: [...(newProject.keyFeatures || []), featureInput.trim()]});
-                          setFeatureInput('');
-                        }
-                      }}
-                      className="px-4 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-500 text-sm font-bold"
-                    >
-                      Add
-                    </button>
+                        }}
+                        className="px-4 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-500 text-sm font-bold"
+                      >
+                        Add
+                      </button>
+                    </div>
+                    <div className="space-y-2 max-h-24 overflow-y-auto">
+                      {newProject.keyFeatures?.map((feature, idx) => (
+                        <div key={idx} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-xl">
+                          <span className="text-sm text-slate-200">{feature}</span>
+                          <button type="button" onClick={() => setNewProject({...newProject, keyFeatures: newProject.keyFeatures?.filter((_, i) => i !== idx)})} className="text-red-500 hover:text-red-400">×</button>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    {newProject.keyFeatures?.map((feature, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-xl">
-                        <span className="text-sm text-slate-200">{feature}</span>
-                        <button type="button" onClick={() => setNewProject({...newProject, keyFeatures: newProject.keyFeatures?.filter((_, i) => i !== idx)})} className="text-red-500 hover:text-red-400">×</button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Challenges & Solutions */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Challenges */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Challenges</label>
                     <textarea
                       placeholder="What challenges did you face?"
-                      rows={4}
+                      rows={2}
                       className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
                       value={newProject.challenges}
                       onChange={e => setNewProject({...newProject, challenges: e.target.value})}
                     />
                   </div>
+
+                  {/* Solutions */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Solutions</label>
                     <textarea
                       placeholder="How did you solve them?"
-                      rows={4}
+                      rows={2}
                       className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
                       value={newProject.solutions}
                       onChange={e => setNewProject({...newProject, solutions: e.target.value})}
                     />
                   </div>
-                </div>
 
-                {/* Results */}
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Results / Impact</label>
-                  <textarea
-                    placeholder="What were the measurable results?"
-                    rows={4}
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
-                    value={newProject.results}
-                    onChange={e => setNewProject({...newProject, results: e.target.value})}
-                  />
-                </div>
-
-                {/* Featured Toggle */}
-                <div className="flex items-center p-6 bg-slate-800/30 rounded-2xl border border-slate-800">
-                  <div className="relative inline-block w-12 mr-4 align-middle select-none transition duration-200 ease-in">
-                    <input 
-                      type="checkbox" 
-                      id="featured" 
-                      className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-slate-700 border-4 border-slate-950 appearance-none cursor-pointer"
-                      checked={newProject.featured}
-                      onChange={e => setNewProject({...newProject, featured: e.target.checked})}
+                  {/* Results */}
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Results / Impact</label>
+                    <textarea
+                      placeholder="What were the measurable results?"
+                      rows={2}
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-slate-700"
+                      value={newProject.results}
+                      onChange={e => setNewProject({...newProject, results: e.target.value})}
                     />
-                    <label htmlFor="featured" className="toggle-label block overflow-hidden h-6 rounded-full bg-slate-800 cursor-pointer"></label>
                   </div>
-                  <label htmlFor="featured" className="text-sm font-bold text-slate-300 uppercase tracking-widest">Pin to Highlights</label>
-                </div>
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full px-10 py-5 bg-white text-slate-950 font-black uppercase tracking-widest rounded-2xl hover:bg-blue-50 transition-all duration-300 transform active:scale-95 text-lg"
-                >
-                  Save / Publish Project
-                </button>
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="w-full px-10 py-5 bg-white text-slate-950 font-black uppercase tracking-widest rounded-2xl hover:bg-blue-50 transition-all duration-300 transform active:scale-95 text-lg"
+                  >
+                    Save / Publish Project
+                  </button>
+                </div>
               </form>
             </div>
 
