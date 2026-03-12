@@ -232,9 +232,9 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
             
             <div className="bg-slate-950/50 p-10 rounded-[2.5rem] mb-16 border border-slate-800">
               <h3 className="font-bold text-white mb-10 uppercase tracking-widest text-sm">Deploy New Asset</h3>
-              <form onSubmit={handleAddProject} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <form onSubmit={handleAddProject} className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative">
                 {/* LEFT COLUMN */}
-                <div className="space-y-8">
+                <div className="space-y-8 overflow-visible">
                   {/* Basic Info */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Project Title</label>
@@ -450,7 +450,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                 </div>
 
                 {/* RIGHT COLUMN */}
-                <div className="space-y-8">
+                <div className="space-y-8 overflow-visible">
                   {/* Links */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Live Demo (Optional)</label>
