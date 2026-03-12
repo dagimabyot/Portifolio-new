@@ -232,9 +232,9 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
             
             <div className="bg-slate-950/50 p-10 rounded-[2.5rem] mb-16 border border-slate-800">
               <h3 className="font-bold text-white mb-10 uppercase tracking-widest text-sm">Deploy New Asset</h3>
-              <form onSubmit={handleAddProject} className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative">
+              <form onSubmit={handleAddProject} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {/* LEFT COLUMN */}
-                <div className="space-y-8 overflow-visible">
+                <div className="space-y-8">
                   {/* Basic Info */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Project Title</label>
@@ -308,43 +308,36 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                   {/* Technologies/Languages */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Technologies/Skills</label>
-                    <div className="relative">
+                    <div className="flex gap-2 mb-2">
                       <input
-                        placeholder="Type to search or add skill..."
-                        className="w-full px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
+                        placeholder="Add skill"
+                        className="flex-1 px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
                         value={skillInput}
                         onChange={e => setSkillInput(e.target.value)}
                         onKeyPress={e => {
                           if (e.key === 'Enter') {
                             e.preventDefault();
-                            if (skillInput.trim() && !newProject.skills?.includes(skillInput.trim())) {
+                            if (skillInput.trim()) {
                               setNewProject({...newProject, skills: [...(newProject.skills || []), skillInput.trim()]});
                               setSkillInput('');
                             }
                           }
                         }}
                       />
-                      {skillInput && (
-                        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-2xl z-50 max-h-48 overflow-y-auto shadow-lg">
-                          {['React', 'Vue', 'Angular', 'Next.js', 'Nuxt', 'Node.js', 'Express', 'Django', 'Flask', 'FastAPI', 'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'AWS', 'Docker', 'Kubernetes', 'Git', 'REST API', 'GraphQL', 'WebSocket', 'Tailwind CSS', 'Bootstrap', 'Material UI']
-                            .filter(skill => skill.toLowerCase().includes(skillInput.toLowerCase()) && !newProject.skills?.includes(skill))
-                            .map((skill) => (
-                              <button
-                                key={skill}
-                                type="button"
-                                onClick={() => {
-                                  setNewProject({...newProject, skills: [...(newProject.skills || []), skill]});
-                                  setSkillInput('');
-                                }}
-                                className="w-full px-6 py-2 text-left text-white hover:bg-blue-600 transition-colors text-sm border-b border-slate-700 last:border-b-0"
-                              >
-                                {skill}
-                              </button>
-                            ))}
-                        </div>
-                      )}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (skillInput.trim()) {
+                            setNewProject({...newProject, skills: [...(newProject.skills || []), skillInput.trim()]});
+                            setSkillInput('');
+                          }
+                        }}
+                        className="px-4 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-500 text-sm font-bold"
+                      >
+                        Add
+                      </button>
                     </div>
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex flex-wrap gap-2">
                       {newProject.skills?.map((skill, idx) => (
                         <span key={idx} className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium flex items-center">
                           {skill}
@@ -356,43 +349,50 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
 
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Languages Used</label>
-                    <div className="relative">
-                      <input
-                        placeholder="Type to search or add language..."
-                        className="w-full px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-slate-700 text-sm"
+                    <div className="flex gap-2 mb-2">
+                      <select
+                        className="flex-1 px-6 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none"
                         value={languageInput}
-                        onChange={e => setLanguageInput(e.target.value)}
-                        onKeyPress={e => {
-                          if (e.key === 'Enter') {
-                            e.preventDefault();
-                            if (languageInput.trim() && !newProject.languages?.includes(languageInput.trim())) {
-                              setNewProject({...newProject, languages: [...(newProject.languages || []), languageInput.trim()]});
-                              setLanguageInput('');
-                            }
+                        onChange={e => {
+                          if (e.target.value && !newProject.languages?.includes(e.target.value)) {
+                            setNewProject({...newProject, languages: [...(newProject.languages || []), e.target.value]});
+                          }
+                          setLanguageInput('');
+                        }}
+                      >
+                        <option value="">Select a language</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                        <option value="C#">C#</option>
+                        <option value="Go">Go</option>
+                        <option value="Rust">Rust</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Swift">Swift</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="SQL">SQL</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="Sass/SCSS">Sass/SCSS</option>
+                      </select>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (languageInput && !newProject.languages?.includes(languageInput)) {
+                            setNewProject({...newProject, languages: [...(newProject.languages || []), languageInput]});
+                            setLanguageInput('');
                           }
                         }}
-                      />
-                      {languageInput && (
-                        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-2xl z-50 max-h-48 overflow-y-auto shadow-lg">
-                          {['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#', 'Go', 'Rust', 'PHP', 'Ruby', 'Swift', 'Kotlin', 'SQL', 'HTML', 'CSS', 'Sass/SCSS']
-                            .filter(lang => lang.toLowerCase().includes(languageInput.toLowerCase()) && !newProject.languages?.includes(lang))
-                            .map((lang) => (
-                              <button
-                                key={lang}
-                                type="button"
-                                onClick={() => {
-                                  setNewProject({...newProject, languages: [...(newProject.languages || []), lang]});
-                                  setLanguageInput('');
-                                }}
-                                className="w-full px-6 py-2 text-left text-white hover:bg-blue-600 transition-colors text-sm border-b border-slate-700 last:border-b-0"
-                              >
-                                {lang}
-                              </button>
-                            ))}
-                        </div>
-                      )}
+                        className="px-4 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-500 text-sm font-bold"
+                        disabled={!languageInput}
+                      >
+                        Add
+                      </button>
                     </div>
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex flex-wrap gap-2">
                       {newProject.languages?.map((lang, idx) => (
                         <span key={idx} className="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs font-medium flex items-center">
                           {lang}
@@ -430,7 +430,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
                 </div>
 
                 {/* RIGHT COLUMN */}
-                <div className="space-y-8 overflow-visible">
+                <div className="space-y-8">
                   {/* Links */}
                   <div className="space-y-3">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Live Demo (Optional)</label>
