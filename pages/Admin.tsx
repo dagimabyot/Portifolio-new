@@ -270,8 +270,6 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
           </div>
         )}
 
-          )}
-
         {activeTab === 'projects' && (
           <div className="p-12 lg:p-20">
             <div className="mb-16">
@@ -665,8 +663,6 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
             </div>
           </div>
         )}
-
-          )}
 
         {activeTab === 'leads' && (
           <div className="p-10 lg:p-16">
