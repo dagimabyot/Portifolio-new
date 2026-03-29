@@ -39,9 +39,9 @@ const Home: React.FC<HomeProps> = ({ data }) => {
           </div>
           
           <div className="flex-1 relative perspective-1000 z-0">
-            <div className="relative w-full max-w-sm mx-auto preserve-3d transition-transform duration-700 hover:rotate-y-12 hover:rotate-x-6">
+            <div className="relative w-full max-w-sm mx-auto preserve-3d transition-transform duration-700 hover:rotate-y-12 hover:rotate-x-6" style={{ transform: 'perspective(1000px) rotateY(-8deg) rotateX(3deg)' }}>
               <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-[100px] -z-10"></div>
-              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group animate-float hover:shadow-2xl hover:shadow-blue-500/30 transition-all" style={{ transform: 'skewY(-5deg)' }}>
+              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group animate-float hover:shadow-2xl hover:shadow-blue-500/30 transition-all" style={{ transform: 'skewY(-8deg)' }}>
                 <img 
                   src="https://picsum.photos/seed/dagim/500/650" 
                   alt={data.settings.name} 

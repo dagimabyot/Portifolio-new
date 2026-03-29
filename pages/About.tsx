@@ -60,8 +60,8 @@ const About: React.FC<AboutProps> = ({ data }) => {
           </div>
         </div>
         
-        <div className="order-1 lg:order-2 relative perspective-1000 mt-8 lg:mt-0 flex justify-center lg:justify-end">
-          <div className="relative aspect-[3/4] w-full max-w-xs bg-slate-900 rounded-[3rem] overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d hover:shadow-2xl hover:shadow-blue-500/20 animate-float" style={{ transform: 'skewY(-5deg)' }}>
+        <div className="order-1 lg:order-2 relative perspective-1000 mt-8 lg:mt-0 flex justify-center lg:justify-end" style={{ perspective: '1000px' }}>
+          <div className="relative aspect-[3/4] w-full max-w-xs bg-slate-900 rounded-[3rem] overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d hover:shadow-2xl hover:shadow-blue-500/20 animate-float" style={{ transform: 'perspective(1000px) rotateY(8deg) rotateX(3deg) skewY(-8deg)' }}>
             <img 
               src="https://picsum.photos/seed/dagim_about/800/1000" 
               alt="Dagim Abyot" 
