@@ -17,10 +17,16 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
   ];
 
   const isActive = (path: string) => {
-    const current = currentPath.toLowerCase() || '#/';
+    const current = currentPath.toLowerCase().replace('/#', '#') || '#/';
     const target = path.toLowerCase();
-    if (target === '#/' && (current === '#/' || current === '' || current === '#')) return true;
-    return current.includes(target.replace('#/', ''));
+    
+    // Exact match for home
+    if (target === '#/') {
+      return current === '#/' || current === '' || current === '#' || current === '#/';
+    }
+    
+    // For other pages, check if path is included
+    return current.startsWith(target);
   };
 
   return (

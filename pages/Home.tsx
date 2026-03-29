@@ -41,11 +41,11 @@ const Home: React.FC<HomeProps> = ({ data }) => {
           <div className="flex-1 relative perspective-1000 z-0">
             <div className="relative w-full max-w-sm mx-auto preserve-3d transition-transform duration-700 hover:rotate-y-12 hover:rotate-x-6">
               <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-[100px] -z-10"></div>
-              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group animate-float hover:shadow-2xl hover:shadow-blue-500/30 transition-all">
+              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group animate-float hover:shadow-2xl hover:shadow-blue-500/30 transition-all" style={{ transform: 'skewY(-3deg)' }}>
                 <img 
                   src="https://picsum.photos/seed/dagim/500/650" 
                   alt={data.settings.name} 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-110"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-120"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 p-5 glass rounded-2xl border border-blue-500/30 shadow-2xl">
