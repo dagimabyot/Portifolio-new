@@ -13,7 +13,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
   return (
     <div className="space-y-24 pb-32">
       {/* Hero Section */}
-      <section className="relative px-8 sm:px-12 lg:px-16 py-20 lg:py-32 overflow-hidden">
+      <section className="relative px-8 sm:px-12 lg:px-16 py-20 lg:py-32 overflow-hidden mt-0">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center lg:text-left z-10">
             <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8 animate-in fade-in slide-in-from-left-4 duration-500">
@@ -41,11 +41,11 @@ const Home: React.FC<HomeProps> = ({ data }) => {
           <div className="flex-1 relative perspective-1000 z-0">
             <div className="relative w-full max-w-sm mx-auto preserve-3d transition-transform duration-700 hover:rotate-y-12 hover:rotate-x-6">
               <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-[100px] -z-10"></div>
-              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group">
+              <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-800 glow-blue rotate-3 group animate-float hover:shadow-2xl hover:shadow-blue-500/30 transition-all">
                 <img 
                   src="https://picsum.photos/seed/dagim/500/650" 
                   alt={data.settings.name} 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-110"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 p-5 glass rounded-2xl border border-blue-500/30 shadow-2xl">

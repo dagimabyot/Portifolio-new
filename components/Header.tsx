@@ -31,7 +31,6 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
             <a href="#/" className="text-2xl font-bold tracking-tight text-white flex items-center group">
               <span className="text-blue-500 mr-1">_</span>
               {settings.brandName.split(' ')[0]}
-              <span className="text-blue-500 ml-0.5">.</span>
             </a>
           </div>
           
@@ -40,8 +39,8 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
               <a
                 key={item.path}
                 href={item.path}
-                className={`text-sm font-bold uppercase tracking-widest transition-all duration-300 hover:text-blue-400 relative py-2 group ${
-                  isActive(item.path) ? 'text-blue-400' : 'text-slate-400'
+                className={`text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-2 group ${
+                  isActive(item.path) ? 'text-blue-400 hover:text-blue-400' : 'text-slate-400 hover:text-slate-300'
                 }`}
               >
                 {item.label}

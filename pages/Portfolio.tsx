@@ -23,7 +23,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
     : data.projects.filter(p => p.category === filter);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen space-y-20">
+    <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 min-h-screen space-y-20">
       <div className="max-w-3xl space-y-6">
         <span className="text-blue-500 font-bold text-sm uppercase tracking-widest block">Work Portfolio</span>
         <h1 className="text-5xl lg:text-7xl font-black text-white tracking-tighter leading-none">The Project Archive<span className="text-blue-500">.</span></h1>

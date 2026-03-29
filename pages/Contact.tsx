@@ -50,7 +50,7 @@ const Contact: React.FC<ContactProps> = ({ onContactSubmit, data }) => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 animate-in fade-in duration-700">
+    <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 animate-in fade-in duration-700">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div>
           <span className="text-blue-500 font-bold text-sm uppercase tracking-widest mb-4 block">Communication</span>

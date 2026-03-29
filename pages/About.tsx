@@ -15,7 +15,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32">
+    <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 space-y-32">
       {/* Intro Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div className="order-2 lg:order-1 space-y-10">
@@ -61,11 +61,11 @@ const About: React.FC<AboutProps> = ({ data }) => {
         </div>
         
         <div className="order-1 lg:order-2 relative perspective-1000">
-          <div className="relative aspect-[4/5] bg-slate-900 rounded-[3rem] overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d">
+          <div className="relative aspect-[3/4] max-w-sm mx-auto lg:mx-0 bg-slate-900 rounded-[3rem] overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d hover:shadow-2xl hover:shadow-blue-500/20 animate-float">
             <img 
-              src="https://picsum.photos/seed/dagim_about/1000/1250" 
+              src="https://picsum.photos/seed/dagim_about/800/1000" 
               alt="Dagim Abyot" 
-              className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-105" 
+              className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-105 hover:scale-110" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
           </div>
