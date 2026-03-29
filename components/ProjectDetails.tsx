@@ -8,6 +8,14 @@ interface ProjectDetailsProps {
 
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => {
   const [pinnedHighlight, setPinnedHighlight] = useState(false);
+  const [isScrollAtBottom, setIsScrollAtBottom] = useState(false);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const element = e.currentTarget;
+    const isAtBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 10;
+    setIsScrollAtBottom(isAtBottom);
+  };
 
   const formatDate = (dateString?: string) => {
     if (!dateString) return '';
@@ -29,10 +37,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="w-full max-w-4xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/50 rounded-3xl shadow-2xl my-8">
-        {/* Header with Close Button */}
-        <div className="sticky top-0 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50 px-8 py-6 flex items-center justify-between z-10">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-4xl max-h-[95vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/50 rounded-t-3xl shadow-2xl flex flex-col" style={{ borderBottomLeftRadius: isScrollAtBottom ? '1.5rem' : '0px', borderBottomRightRadius: isScrollAtBottom ? '1.5rem' : '0px' }}>
+        {/* Header with Close Button - Fixed */}
+        <div className="bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50 px-8 py-6 flex items-center justify-between z-10 flex-shrink-0 rounded-t-3xl">
           <div>
             <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-2 bg-blue-500/20 text-blue-300 border border-blue-500/30">
               {project.category}
@@ -41,7 +49,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-slate-700 rounded-lg transition-colors text-slate-400 hover:text-white"
+            className="p-2 hover:bg-slate-700 rounded-lg transition-colors text-slate-400 hover:text-white flex-shrink-0"
             aria-label="Close"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,8 +58,8 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
           </button>
         </div>
 
-        {/* Content */}
-        <div className="p-8 space-y-8">
+        {/* Content - Scrollable */}
+        <div ref={contentRef} onScroll={handleScroll} className="p-8 space-y-8 overflow-y-auto flex-1">
           {/* Project Image */}
           <div className="rounded-2xl overflow-hidden border border-slate-700/50">
             <img
@@ -97,6 +105,14 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
             <p className="text-slate-200 leading-relaxed text-lg">{project.description}</p>
           </div>
 
+          {/* About Section */}
+          {project.moreDetails && (
+            <div className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700/30">
+              <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest mb-3">About</p>
+              <p className="text-slate-400 leading-relaxed">{project.moreDetails}</p>
+            </div>
+          )}
+
           {/* Detailed Description */}
           {project.detailedDescription && (
             <div>
@@ -113,7 +129,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                 <div>
                   <h4 className="text-xs font-bold text-blue-400 mb-3">Languages</h4>
                   <div className="flex flex-wrap gap-2">
-                    {project.languages.map(lang => (
+                    {Array.from(new Set(project.languages)).map(lang => (
                       <span key={lang} className="px-3 py-1 text-xs font-semibold bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30">
                         {lang}
                       </span>
@@ -125,7 +141,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                 <div>
                   <h4 className="text-xs font-bold text-emerald-400 mb-3">Technologies</h4>
                   <div className="flex flex-wrap gap-2">
-                    {project.skills.map(skill => (
+                    {Array.from(new Set(project.skills)).map(skill => (
                       <span key={skill} className="px-3 py-1 text-xs font-semibold bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/30">
                         {skill}
                       </span>
@@ -239,13 +255,9 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
           </div>
 
           {/* Confirm/Publish */}
-          <button
-            onClick={onClose}
-            className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-sm uppercase tracking-widest rounded-xl transition-all"
-          >
-            Close Details
-          </button>
         </div>
+
+
       </div>
     </div>
   );

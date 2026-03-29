@@ -58,14 +58,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             ))}
           </div>
 
-          {project.moreDetails && (
-            <div className="mb-6 pb-6 border-b border-slate-700">
-              <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest mb-2">About</p>
-              <p className="text-slate-400 text-xs leading-relaxed">
-                {project.moreDetails}
-              </p>
-            </div>
-          )}
+
           
           <div className="mt-auto pt-6 border-t border-slate-800 flex items-center justify-between">
             <div className="flex space-x-3" onClick={(e) => e.stopPropagation()}>
