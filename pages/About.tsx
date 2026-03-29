@@ -17,7 +17,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
   return (
     <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 space-y-32">
       {/* Intro Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
         <div className="order-2 lg:order-1 space-y-8">
           <div className="space-y-3">
             <span className="text-blue-500 font-bold text-sm uppercase tracking-widest block">Biography</span>
@@ -60,8 +60,8 @@ const About: React.FC<AboutProps> = ({ data }) => {
           </div>
         </div>
         
-        <div className="order-1 lg:order-2 relative perspective-1000 mt-8 lg:mt-0">
-          <div className="relative aspect-[3/4] max-w-sm mx-auto lg:mx-0 bg-slate-900 rounded-[3rem] overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d hover:shadow-2xl hover:shadow-blue-500/20 animate-float" style={{ transform: 'skewY(-3deg)' }}>
+        <div className="order-1 lg:order-2 relative perspective-1000 mt-8 lg:mt-0 flex justify-center lg:justify-end">
+          <div className="relative aspect-[3/4] w-full max-w-xs bg-slate-900 rounded-[3rem] overflow-hidden border-2 border-slate-800 shadow-2xl transition-all duration-700 hover:rotate-0 rotate-3 glow-blue group preserve-3d hover:shadow-2xl hover:shadow-blue-500/20 animate-float" style={{ transform: 'skewY(-5deg)' }}>
             <img 
               src="https://picsum.photos/seed/dagim_about/800/1000" 
               alt="Dagim Abyot" 

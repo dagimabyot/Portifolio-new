@@ -30,7 +30,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl h-[90vh] max-h-[90vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/50 rounded-3xl shadow-2xl flex flex-col">
+      <div className="w-full max-w-4xl max-h-[95vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/50 rounded-3xl shadow-2xl flex flex-col">
         {/* Header with Close Button - Fixed */}
         <div className="bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50 px-8 py-6 flex items-center justify-between z-10 flex-shrink-0">
           <div>
@@ -96,6 +96,14 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
             <p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-3">Executive Summary</p>
             <p className="text-slate-200 leading-relaxed text-lg">{project.description}</p>
           </div>
+
+          {/* About Section */}
+          {project.moreDetails && (
+            <div className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700/30">
+              <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest mb-3">About</p>
+              <p className="text-slate-400 leading-relaxed">{project.moreDetails}</p>
+            </div>
+          )}
 
           {/* Detailed Description */}
           {project.detailedDescription && (
@@ -241,15 +249,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
           {/* Confirm/Publish */}
         </div>
 
-        {/* Footer Button - Fixed */}
-        <div className="bg-slate-900/95 backdrop-blur-sm border-t border-slate-700/50 p-8 flex-shrink-0">
-          <button
-            onClick={onClose}
-            className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold text-sm uppercase tracking-widest rounded-xl transition-all"
-          >
-            Close Details
-          </button>
-        </div>
+
       </div>
     </div>
   );
