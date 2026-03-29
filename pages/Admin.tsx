@@ -113,125 +113,178 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
-        <div>
-          <h1 className="text-4xl font-black text-white tracking-tighter">System Console<span className="text-blue-500">_</span></h1>
-          <p className="text-slate-500 text-sm mt-2 font-bold uppercase tracking-[0.2em]">Manage your digital presence</p>
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900">
+      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-16">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-20 gap-12">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 w-fit">
+              <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+              <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">Management Dashboard</span>
+            </div>
+            <h1 className="text-5xl lg:text-6xl font-black text-white tracking-tighter">System Console<span className="text-blue-500">_</span></h1>
+            <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">Manage your complete digital presence and portfolio. Update settings, add projects, and track leads.</p>
+          </div>
+          <div className="flex bg-slate-900/80 backdrop-blur-sm p-2 rounded-2xl border border-slate-800 gap-2">
+            {(['settings', 'projects', 'leads'] as const).map(tab => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${
+                  activeTab === tab 
+                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-900/50' 
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="flex bg-slate-900 p-1.5 rounded-2xl border border-slate-800">
-          {(['settings', 'projects', 'leads'] as const).map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-8 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
-                activeTab === tab ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40' : 'text-slate-500 hover:text-white'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      </div>
 
-      <div className="bg-slate-900/50 rounded-[3rem] border border-slate-800 shadow-2xl overflow-hidden relative">
-         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[100px] -z-10"></div>
+        <div className="bg-slate-900/30 backdrop-blur-sm rounded-[2.5rem] border border-slate-800/50 shadow-2xl overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[100px] -z-10"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-800/20 rounded-full blur-[100px] -z-10"></div>
         
         {activeTab === 'settings' && (
-          <div className="p-10 lg:p-16">
-            <h2 className="text-2xl font-bold text-white mb-10 flex items-center">
-               <span className="w-2 h-6 bg-blue-600 rounded-full mr-4"></span>
-               Configuration
-            </h2>
-            <form onSubmit={saveSettings} className="space-y-8 max-w-3xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Identity Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    value={settingsForm.name}
-                    onChange={e => setSettingsForm({...settingsForm, name: e.target.value})}
-                  />
+          <div className="p-12 lg:p-20">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
+                <h2 className="text-3xl lg:text-4xl font-black text-white">Profile Configuration</h2>
+              </div>
+              <p className="text-slate-400 text-lg">Manage your personal branding and core information</p>
+            </div>
+
+            <form onSubmit={saveSettings} className="space-y-12">
+              {/* Identity Section */}
+              <div className="space-y-6">
+                <div className="px-6 py-4 rounded-2xl bg-blue-500/5 border border-blue-500/20">
+                  <p className="text-sm font-bold text-blue-400 uppercase tracking-widest">Identity Information</p>
                 </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Brand Signature</label>
-                  <input
-                    type="text"
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    value={settingsForm.brandName}
-                    onChange={e => setSettingsForm({...settingsForm, brandName: e.target.value})}
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-slate-300 uppercase tracking-widest block">Full Name</label>
+                    <input
+                      type="text"
+                      placeholder="Your full name"
+                      className="w-full px-5 py-3.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white placeholder-slate-600 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      value={settingsForm.name}
+                      onChange={e => setSettingsForm({...settingsForm, name: e.target.value})}
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-slate-300 uppercase tracking-widest block">Brand Name</label>
+                    <input
+                      type="text"
+                      placeholder="Your brand/portfolio name"
+                      className="w-full px-5 py-3.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white placeholder-slate-600 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      value={settingsForm.brandName}
+                      onChange={e => setSettingsForm({...settingsForm, brandName: e.target.value})}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="space-y-3">
-                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Primary Headline</label>
-                <input
-                  type="text"
-                  className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                  value={settingsForm.heroHeadline}
-                  onChange={e => setSettingsForm({...settingsForm, heroHeadline: e.target.value})}
-                />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Primary Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    value={settingsForm.email}
-                    onChange={e => setSettingsForm({...settingsForm, email: e.target.value})}
-                  />
+
+              {/* Headlines & Bio Section */}
+              <div className="space-y-6">
+                <div className="px-6 py-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+                  <p className="text-sm font-bold text-emerald-400 uppercase tracking-widest">Messaging</p>
                 </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Phone Number</label>
-                  <input
-                    type="text"
-                    className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    value={settingsForm.phone || ''}
-                    onChange={e => setSettingsForm({...settingsForm, phone: e.target.value})}
-                  />
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-slate-300 uppercase tracking-widest block">Hero Headline</label>
+                    <input
+                      type="text"
+                      placeholder="e.g., Full Stack Developer & Designer"
+                      className="w-full px-5 py-3.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white placeholder-slate-600 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      value={settingsForm.heroHeadline}
+                      onChange={e => setSettingsForm({...settingsForm, heroHeadline: e.target.value})}
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <label className="text-sm font-bold text-slate-300 uppercase tracking-widest block">Professional Bio</label>
+                      <button 
+                        type="button"
+                        onClick={handleAiBioImprovement}
+                        disabled={isAiLoading}
+                        className="text-xs font-bold text-blue-400 flex items-center gap-1 hover:text-blue-300 disabled:opacity-50 transition-colors uppercase tracking-widest"
+                      >
+                        <svg className={`w-4 h-4 ${isAiLoading ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        {isAiLoading ? 'Optimizing...' : 'Enhance with AI'}
+                      </button>
+                    </div>
+                    <textarea
+                      rows={5}
+                      placeholder="Write a compelling biography about yourself..."
+                      className="w-full px-5 py-3.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white placeholder-slate-600 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all leading-relaxed"
+                      value={settingsForm.bio}
+                      onChange={e => setSettingsForm({...settingsForm, bio: e.target.value})}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center mb-1 px-1">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">About Brief</label>
-                  <button 
-                    type="button"
-                    onClick={handleAiBioImprovement}
-                    disabled={isAiLoading}
-                    className="text-[10px] font-bold text-blue-500 flex items-center hover:underline disabled:opacity-50 uppercase tracking-widest"
-                  >
-                    <svg className={`w-3 h-3 mr-2 ${isAiLoading ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    Optimize with AI
-                  </button>
+
+              {/* Contact Section */}
+              <div className="space-y-6">
+                <div className="px-6 py-4 rounded-2xl bg-purple-500/5 border border-purple-500/20">
+                  <p className="text-sm font-bold text-purple-400 uppercase tracking-widest">Contact Details</p>
                 </div>
-                <textarea
-                  rows={6}
-                  className="w-full px-6 py-4 rounded-2xl bg-slate-950 border border-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 resize-none leading-relaxed"
-                  value={settingsForm.bio}
-                  onChange={e => setSettingsForm({...settingsForm, bio: e.target.value})}
-                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-slate-300 uppercase tracking-widest block">Email Address</label>
+                    <div className="relative">
+                      <svg className="w-5 h-5 absolute left-4 top-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                      <input
+                        type="email"
+                        placeholder="your@email.com"
+                        className="w-full pl-12 pr-5 py-3.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white placeholder-slate-600 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        value={settingsForm.email}
+                        onChange={e => setSettingsForm({...settingsForm, email: e.target.value})}
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-slate-300 uppercase tracking-widest block">Phone Number</label>
+                    <div className="relative">
+                      <svg className="w-5 h-5 absolute left-4 top-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00-.7.29l-1.36 1.36a1 1 0 00-.22 1.09C7.05 9.23 10.77 13 14.54 14.69c.33.12.77.04 1.09-.22l1.36-1.36a1 1 0 00.29-.7V7a2 2 0 00-2-2h-3a2 2 0 00-2 2v3a2 2 0 002 2h3v3a2 2 0 002 2h3a2 2 0 002-2v-3a2 2 0 00-2-2h-3z" /></svg>
+                      <input
+                        type="tel"
+                        placeholder="+1 (555) 000-0000"
+                        className="w-full pl-12 pr-5 py-3.5 rounded-xl bg-slate-950/50 border border-slate-800 text-white placeholder-slate-600 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        value={settingsForm.phone || ''}
+                        onChange={e => setSettingsForm({...settingsForm, phone: e.target.value})}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
+
               <button
                 type="submit"
-                className="px-12 py-5 bg-blue-600 text-white font-black text-lg uppercase tracking-widest rounded-2xl hover:bg-blue-500 transition-all duration-300 shadow-2xl shadow-blue-900/40"
+                className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-black text-base uppercase tracking-widest rounded-xl hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-xl shadow-blue-900/40 hover:shadow-blue-900/60 transform hover:scale-105 active:scale-95 mt-8"
               >
-                Update Core Settings
+                Save Profile Settings
               </button>
             </form>
           </div>
         )}
 
         {activeTab === 'projects' && (
-          <div className="p-10 lg:p-16">
-            <h2 className="text-2xl font-bold text-white mb-10 flex items-center">
-               <span className="w-2 h-6 bg-blue-600 rounded-full mr-4"></span>
-               Asset Management
-            </h2>
+          <div className="p-12 lg:p-20">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
+                <h2 className="text-3xl lg:text-4xl font-black text-white">Portfolio Management</h2>
+              </div>
+              <p className="text-slate-400 text-lg">Add, edit, and manage your project portfolio</p>
+            </div>
             
-            <div className="bg-slate-950/50 p-10 rounded-[2.5rem] mb-16 border border-slate-800">
-              <h3 className="font-bold text-white mb-10 uppercase tracking-widest text-sm">Deploy New Asset</h3>
+            <div className="bg-gradient-to-br from-slate-900/40 to-slate-950/40 p-12 rounded-2xl mb-16 border border-slate-800/50 backdrop-blur-sm">
+              <div className="flex items-center gap-2 mb-8">
+                <div className="w-1 h-6 bg-emerald-500 rounded-full"></div>
+                <h3 className="font-black text-white text-lg uppercase tracking-widest">Create New Project</h3>
+              </div>
               <form onSubmit={handleAddProject} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {/* LEFT COLUMN */}
                 <div className="space-y-8">
