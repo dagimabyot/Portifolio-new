@@ -145,7 +145,7 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[100px] -z-10"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-800/20 rounded-full blur-[100px] -z-10"></div>
         
-        {activeTab === 'settings' && (
+          {activeTab === 'settings' && (
           <div className="p-12 lg:p-20">
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-4">
@@ -269,6 +269,8 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
             </form>
           </div>
         )}
+
+          )}
 
         {activeTab === 'projects' && (
           <div className="p-12 lg:p-20">
@@ -664,6 +666,8 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
           </div>
         )}
 
+          )}
+
         {activeTab === 'leads' && (
           <div className="p-10 lg:p-16">
              <h2 className="text-2xl font-bold text-white mb-10 flex items-center">
@@ -704,7 +708,8 @@ const Admin: React.FC<AdminProps> = ({ data, onUpdateSettings, onAddProject, onD
               </div>
             )}
           </div>
-        )}
+          )}
+        </div>
       </div>
       
       <style>{`
