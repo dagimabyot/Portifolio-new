@@ -76,7 +76,6 @@ const Home: React.FC<HomeProps> = ({ data }) => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-0 mb-8 sm:mb-12">
             <div>
-              <span className="text-blue-500 font-bold text-sm uppercase tracking-widest mb-3 block">Selected Works</span>
               <h2 className="text-3xl lg:text-4xl font-black text-white">Featured Projects</h2>
             </div>
             <a href="#/portfolio" className="group text-blue-500 font-bold text-base hover:text-blue-400 mt-6 md:mt-0 flex items-center">

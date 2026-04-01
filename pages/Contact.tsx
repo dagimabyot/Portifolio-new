@@ -53,7 +53,6 @@ const Contact: React.FC<ContactProps> = ({ onContactSubmit, data }) => {
     <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 animate-in fade-in duration-700">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div>
-          <span className="text-blue-500 font-bold text-sm uppercase tracking-widest mb-4 block">Communication</span>
           <h1 className="text-5xl lg:text-7xl font-black text-white mb-8 tracking-tighter leading-none">Initiate <br/><span className="text-blue-500">Contact.</span></h1>
           <p className="text-slate-400 text-lg lg:text-xl leading-relaxed mb-16 max-w-lg">
             Ready to bring your digital vision to life? Fill out the brief below, and let's start engineering excellence together.

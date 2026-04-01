@@ -48,7 +48,6 @@ const About: React.FC<AboutProps> = ({ data }) => {
           {/* Left Column: Bio & CTA */}
           <div className="space-y-6">
             <div className="space-y-2">
-              <span className="text-blue-500 font-bold text-xs uppercase tracking-widest block animate-text-glow">About</span>
               <h1 className="text-3xl lg:text-4xl font-black tracking-tight leading-snug animate-color-shift">
                 Full Stack Developer
               </h1>
@@ -133,7 +132,6 @@ const About: React.FC<AboutProps> = ({ data }) => {
       <section className="bg-slate-900/30 py-16">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="mb-10">
-            <span className="text-blue-500 font-bold text-xs uppercase tracking-widest block mb-2 animate-text-glow">Skills</span>
             <h2 className="text-3xl lg:text-4xl font-black tracking-tight animate-color-shift">Technical Stack</h2>
           </div>
           

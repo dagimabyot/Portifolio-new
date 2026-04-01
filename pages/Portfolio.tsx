@@ -25,7 +25,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
   return (
     <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 min-h-screen space-y-20">
       <div className="max-w-3xl space-y-6">
-        <span className="text-blue-500 font-bold text-sm uppercase tracking-widest block">Work Portfolio</span>
         <h1 className="text-5xl lg:text-7xl font-black text-white tracking-tighter leading-none">The Project Archive<span className="text-blue-500">.</span></h1>
         <p className="text-slate-400 text-lg lg:text-xl leading-relaxed">
           A collection of digital tools, creative websites, and innovative applications I've engineered over the past 2+ years.
