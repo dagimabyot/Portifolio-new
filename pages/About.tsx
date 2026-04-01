@@ -16,21 +16,47 @@ const About: React.FC<AboutProps> = ({ data }) => {
 
   return (
     <div className="bg-[#020617] min-h-screen">
+      <style>{`
+        @keyframes colorShift {
+          0% { color: #3b82f6; text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+          25% { color: #8b5cf6; text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+          50% { color: #06b6d4; text-shadow: 0 0 10px rgba(6, 182, 212, 0.5); }
+          75% { color: #ec4899; text-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
+          100% { color: #3b82f6; text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+        }
+        @keyframes textGlow {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.9; transform: scale(1.02); }
+        }
+        @keyframes slideInLetters {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-color-shift {
+          animation: colorShift 4s ease-in-out infinite;
+        }
+        .animate-text-glow {
+          animation: textGlow 3s ease-in-out infinite;
+        }
+        .animate-slide-in {
+          animation: slideInLetters 0.6s ease-out forwards;
+        }
+      `}</style>
       {/* Hero Section - Two Column Layout */}
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 pt-12 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Left Column: Bio & CTA */}
           <div className="space-y-6">
             <div className="space-y-2">
-              <span className="text-blue-500 font-bold text-xs uppercase tracking-widest block">About</span>
-              <h1 className="text-3xl lg:text-4xl font-black text-white tracking-tight leading-snug">
+              <span className="text-blue-500 font-bold text-xs uppercase tracking-widest block animate-text-glow">About</span>
+              <h1 className="text-3xl lg:text-4xl font-black tracking-tight leading-snug animate-color-shift">
                 Full Stack Developer
               </h1>
             </div>
             
             {/* Main Bio Box */}
             <div className="bg-slate-900/50 border border-slate-700/50 rounded-2xl p-6 space-y-4">
-              <p className="text-slate-200 font-semibold text-lg leading-relaxed">
+              <p className="text-slate-200 font-semibold text-lg leading-relaxed animate-color-shift">
                 {data.settings.bio}
               </p>
               <div className="w-full h-px bg-gradient-to-r from-blue-500/20 via-blue-500/10 to-transparent"></div>
@@ -107,8 +133,8 @@ const About: React.FC<AboutProps> = ({ data }) => {
       <section className="bg-slate-900/30 py-16">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="mb-10">
-            <span className="text-blue-500 font-bold text-xs uppercase tracking-widest block mb-2">Skills</span>
-            <h2 className="text-3xl lg:text-4xl font-black text-white tracking-tight">Technical Stack</h2>
+            <span className="text-blue-500 font-bold text-xs uppercase tracking-widest block mb-2 animate-text-glow">Skills</span>
+            <h2 className="text-3xl lg:text-4xl font-black tracking-tight animate-color-shift">Technical Stack</h2>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -142,7 +168,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
         <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 border border-slate-700/30 rounded-2xl p-10 lg:p-14 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl -mr-40 -mt-40 -z-10"></div>
           <div className="relative z-10 space-y-6">
-            <h2 className="text-2xl lg:text-3xl font-black text-white tracking-tight">Ready to collaborate?</h2>
+            <h2 className="text-2xl lg:text-3xl font-black tracking-tight animate-color-shift">Ready to collaborate?</h2>
             <p className="text-slate-400 text-sm lg:text-base max-w-2xl mx-auto leading-relaxed">
               I'm always interested in hearing about new projects and opportunities. Feel free to reach out if you'd like to discuss your next idea.
             </p>
