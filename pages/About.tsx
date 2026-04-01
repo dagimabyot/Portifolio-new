@@ -30,17 +30,17 @@ const About: React.FC<AboutProps> = ({ data }) => {
             
             {/* Main Bio Box */}
             <div className="bg-slate-900/50 border border-slate-700/50 rounded-2xl p-6 space-y-4">
-              <p className="text-slate-200 font-semibold text-base leading-relaxed">
+              <p className="text-slate-200 font-semibold text-lg leading-relaxed">
                 {data.settings.bio}
               </p>
               <div className="w-full h-px bg-gradient-to-r from-blue-500/20 via-blue-500/10 to-transparent"></div>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-400 text-base leading-relaxed">
                 My journey in software development is fueled by a desire to build tools that make a difference. With 2+ years of dedicated experience, I've mastered the balance between aesthetic appeal and functional robustness.
               </p>
             </div>
 
             {/* Additional Context */}
-            <div className="text-slate-400 text-sm leading-relaxed space-y-3">
+            <div className="text-slate-400 text-base leading-relaxed space-y-3">
               <p>
                 I take pride in writing clean, maintainable code and staying ahead of the curve with modern frameworks. Whether it's a responsive landing page or a complex full-stack application, I bring 100% commitment to every project.
               </p>
@@ -71,8 +71,24 @@ const About: React.FC<AboutProps> = ({ data }) => {
 
           {/* Right Column: Profile Image */}
           <div className="relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-xs aspect-[3/4]">
-              <div className="relative h-full bg-slate-900/30 rounded-3xl overflow-hidden border border-slate-700/60 shadow-2xl transition-all duration-500 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10 group">
+            <style>{`
+              @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-12px); }
+              }
+              @keyframes tilt {
+                0%, 100% { transform: perspective(1000px) rotateX(5deg) rotateY(-5deg); }
+                50% { transform: perspective(1000px) rotateX(-5deg) rotateY(5deg); }
+              }
+              .animate-float-slow {
+                animation: float 4s ease-in-out infinite;
+              }
+              .animate-tilt {
+                animation: tilt 6s ease-in-out infinite;
+              }
+            `}</style>
+            <div className="relative w-full max-w-xs aspect-[3/4] animate-float-slow">
+              <div className="relative h-full bg-slate-900/30 rounded-3xl overflow-hidden border border-slate-700/60 shadow-2xl transition-all duration-500 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10 group animate-tilt">
                 <img 
                   src="https://picsum.photos/seed/dagim_about/800/1000" 
                   alt="Dagim Abyot" 
@@ -88,7 +104,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
       </div>
 
       {/* Skills Section */}
-      <section className="bg-slate-900/30 border-y border-slate-700/30 py-16">
+      <section className="bg-slate-900/30 py-16">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="mb-10">
             <span className="text-blue-500 font-bold text-xs uppercase tracking-widest block mb-2">Skills</span>
