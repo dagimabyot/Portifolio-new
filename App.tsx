@@ -9,9 +9,12 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
-import Console from './pages/Console';
+import ConsoleSupabase from './pages/ConsoleSupabase';
+import { Login } from './pages/Login';
+import { AdminAuthProvider, useAdminAuth } from './contexts/AdminAuthContext';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { isAuthenticated } = useAdminAuth();
   const [data, setData] = useState<PortfolioData>(() => {
     try {
       const saved = localStorage.getItem('portfolio_data_v2');
@@ -75,6 +78,13 @@ const App: React.FC = () => {
     // Normalize path comparison
     const path = currentPath.toLowerCase();
     
+    // Protected routes - check authentication
+    if (path.includes('console') || path.includes('admin')) {
+      if (!isAuthenticated) {
+        return <Login />;
+      }
+    }
+    
     if (path === '#/' || path === '' || path === '#') {
       return <Home data={data} />;
     }
@@ -88,7 +98,7 @@ const App: React.FC = () => {
       return <Contact data={data} onContactSubmit={addLead} />;
     }
     if (path.includes('console')) {
-      return <Console data={data} />;
+      return <ConsoleSupabase data={data} />;
     }
     if (path.includes('admin')) {
       return (
@@ -114,6 +124,14 @@ const App: React.FC = () => {
       </main>
       <Footer settings={data.settings} />
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <AdminAuthProvider>
+      <AppContent />
+    </AdminAuthProvider>
   );
 };
 

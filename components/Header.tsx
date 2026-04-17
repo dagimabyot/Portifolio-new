@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useAdminAuth } from '../contexts/AdminAuthContext';
 
 interface HeaderProps {
   settings: { brandName: string };
@@ -8,6 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated, logout } = useAdminAuth();
 
   const navItems = [
     { label: 'Home', path: '#/' },
@@ -53,12 +55,24 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
                 <span className={`absolute bottom-0 left-0 h-[2px] bg-blue-500 transition-all duration-300 ${isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
               </a>
             ))}
-            <a
-              href="#/admin"
-              className="px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] bg-slate-900 text-white rounded-xl hover:bg-blue-600 transition-all duration-300 border border-slate-800 hover:border-blue-500 shadow-xl shadow-black/40"
-            >
-              Console
-            </a>
+            {isAuthenticated ? (
+              <button
+                onClick={() => {
+                  logout();
+                  window.location.hash = '#/';
+                }}
+                className="px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] bg-red-600 text-white rounded-xl hover:bg-red-700 transition-all duration-300 border border-red-500 hover:border-red-400 shadow-xl shadow-black/40"
+              >
+                Logout
+              </button>
+            ) : (
+              <a
+                href="#/admin"
+                className="px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] bg-slate-900 text-white rounded-xl hover:bg-blue-600 transition-all duration-300 border border-slate-800 hover:border-blue-500 shadow-xl shadow-black/40"
+              >
+                Console
+              </a>
+            )}
           </div>
 
           <div className="md:hidden flex items-center">
@@ -95,13 +109,26 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
             </a>
           ))}
           <div className="pt-6">
-            <a
-              href="#/admin"
-              onClick={() => setIsOpen(false)}
-              className="block w-full py-5 rounded-2xl text-center text-lg font-black uppercase tracking-[0.3em] bg-blue-600 text-white shadow-2xl shadow-blue-500/20"
-            >
-              Console
-            </a>
+            {isAuthenticated ? (
+              <button
+                onClick={() => {
+                  logout();
+                  window.location.hash = '#/';
+                  setIsOpen(false);
+                }}
+                className="block w-full py-5 rounded-2xl text-center text-lg font-black uppercase tracking-[0.3em] bg-red-600 text-white shadow-2xl shadow-red-500/20"
+              >
+                Logout
+              </button>
+            ) : (
+              <a
+                href="#/admin"
+                onClick={() => setIsOpen(false)}
+                className="block w-full py-5 rounded-2xl text-center text-lg font-black uppercase tracking-[0.3em] bg-blue-600 text-white shadow-2xl shadow-blue-500/20"
+              >
+                Console
+              </a>
+            )}
           </div>
         </div>
       )}
