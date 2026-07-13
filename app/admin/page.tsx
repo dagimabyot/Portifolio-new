@@ -43,11 +43,34 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="glass border-b border-accent/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+      {/* Sidebar Navigation */}
+      <div className="flex min-h-screen">
+        <aside className="w-64 glass border-r border-accent/10 p-6">
+          <h2 className="text-xl font-bold text-white mb-8">Admin Panel</h2>
+          <nav className="space-y-2">
+            <Link href="/admin" className="block px-4 py-2 rounded-lg bg-accent/10 text-accent font-semibold">
+              Dashboard
+            </Link>
+            <Link href="/admin/projects" className="block px-4 py-2 rounded-lg text-foreground/70 hover:bg-accent/5 transition-colors">
+              Manage Projects
+            </Link>
+            <Link href="/admin/messages" className="block px-4 py-2 rounded-lg text-foreground/70 hover:bg-accent/5 transition-colors">
+              Messages
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="w-full text-left px-4 py-2 rounded-lg text-red-400 hover:bg-red-500/10 transition-colors mt-8"
+            >
+              Logout
+            </button>
+          </nav>
+        </aside>
+
+        <main className="flex-1">
+          {/* Header */}
+          <header className="glass border-b border-accent/10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+              <h1 className="text-2xl font-bold">Admin Dashboard</h1>
             <p className="text-foreground/60 text-sm">Manage your portfolio content</p>
           </div>
           <button
@@ -55,9 +78,9 @@ export default function AdminDashboard() {
             className="px-6 py-2 bg-error/10 hover:bg-error/20 text-error rounded-lg font-medium transition-colors"
           >
             Logout
-          </button>
-        </div>
-      </header>
+              </button>
+            </div>
+          </header>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -179,9 +202,10 @@ export default function AdminDashboard() {
             <div className="glass rounded-lg p-8">
               <p className="text-foreground/70">Messages management interface coming soon...</p>
             </div>
+            </div>
           </div>
-        )}
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
