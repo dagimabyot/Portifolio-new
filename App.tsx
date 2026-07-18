@@ -27,7 +27,7 @@ const App: React.FC = () => {
     const handleHashChange = () => {
       const newHash = window.location.hash || '#/';
       setCurrentPath(newHash);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     };
 
     window.addEventListener('hashchange', handleHashChange);
