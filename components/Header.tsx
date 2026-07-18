@@ -29,8 +29,7 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
     return current.startsWith(target);
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    e.preventDefault();
+  const handleNavClick = (path: string) => {
     window.location.hash = path;
   };
 
@@ -39,33 +38,31 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#/" onClick={(e) => handleNavClick(e, '#/')} className="text-2xl font-bold tracking-tight text-white flex items-center group">
+            <button onClick={() => handleNavClick('#/')} className="text-2xl font-bold tracking-tight text-white flex items-center group hover:opacity-80 transition-opacity">
               <span className="text-blue-500 mr-1">_</span>
               {settings.brandName.split(' ')[0]}
-            </a>
+            </button>
           </div>
           
           <div className="hidden md:flex items-center space-x-10">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.path}
-                href={item.path}
-                onClick={(e) => handleNavClick(e, item.path)}
+                onClick={() => handleNavClick(item.path)}
                 className={`text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-2 group ${
                   isActive(item.path) ? 'text-blue-400 hover:text-blue-400' : 'text-slate-400 hover:text-slate-300'
                 }`}
               >
                 {item.label}
                 <span className={`absolute bottom-0 left-0 h-[2px] bg-blue-500 transition-all duration-300 ${isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-              </a>
+              </button>
             ))}
-            <a
-              href="#/admin"
-              onClick={(e) => handleNavClick(e, '#/admin')}
+            <button
+              onClick={() => handleNavClick('#/admin')}
               className="px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] bg-slate-900 text-white rounded-xl hover:bg-blue-600 transition-all duration-300 border border-slate-800 hover:border-blue-500 shadow-xl shadow-black/40"
             >
               Console
-            </a>
+            </button>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -90,31 +87,29 @@ const Header: React.FC<HeaderProps> = ({ settings, currentPath }) => {
       {isOpen && (
         <div className="md:hidden glass border-b border-slate-800/50 py-10 px-6 space-y-4 animate-in slide-in-from-top duration-300">
           {navItems.map((item) => (
-            <a
+            <button
               key={item.path}
-              href={item.path}
-              onClick={(e) => {
-                handleNavClick(e, item.path);
+              onClick={() => {
+                handleNavClick(item.path);
                 setIsOpen(false);
               }}
-              className={`block px-6 py-4 rounded-2xl text-lg font-black uppercase tracking-widest transition-all ${
+              className={`block w-full px-6 py-4 rounded-2xl text-lg font-black uppercase tracking-widest transition-all text-left ${
                 isActive(item.path) ? 'bg-blue-600/10 text-blue-400 border border-blue-500/30' : 'text-slate-400 hover:bg-slate-800'
               }`}
             >
               {item.label}
-            </a>
+            </button>
           ))}
           <div className="pt-6">
-            <a
-              href="#/admin"
-              onClick={(e) => {
-                handleNavClick(e, '#/admin');
+            <button
+              onClick={() => {
+                handleNavClick('#/admin');
                 setIsOpen(false);
               }}
               className="block w-full py-5 rounded-2xl text-center text-lg font-black uppercase tracking-[0.3em] bg-blue-600 text-white shadow-2xl shadow-blue-500/20"
             >
               Console
-            </a>
+            </button>
           </div>
         </div>
       )}
