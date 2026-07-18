@@ -178,7 +178,8 @@ export const INITIAL_DATA: PortfolioData = {
     socials: {
       github: 'https://github.com/dagimabyot/',
       linkedin: 'https://www.linkedin.com/in/dagim-abyot/',
-      twitter: 'https://twitter.com/dagim_dev'
+      twitter: 'https://twitter.com/dagim_dev',
+      telegram: 'https://t.me/dagiabyot'
     }
   }
 };

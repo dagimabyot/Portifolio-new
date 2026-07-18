@@ -1,0 +1,87 @@
+================================================================================
+  PORTFOLIO APP - QUICK START GUIDE
+================================================================================
+
+🚀 START BACKEND (Terminal 1)
+────────────────────────────────────────────────────────────────────────────
+cd backend
+python3 -m venv venv
+source venv/bin/activate          # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py seed_data
+python manage.py createsuperuser  # Create admin account
+python manage.py runserver 8000
+
+When creating superuser, remember these credentials for later!
+Example:
+  Username: dagim
+  Password: YourSecurePassword123
+
+✓ Backend running at: http://127.0.0.1:8000/api
+
+
+🎨 START FRONTEND (Terminal 2)
+────────────────────────────────────────────────────────────────────────────
+npm install
+npm run dev
+
+✓ Frontend running at: http://localhost:3000
+
+
+🔐 ACCESS ADMIN CONSOLE
+────────────────────────────────────────────────────────────────────────────
+1. Go to http://localhost:3000
+2. Click "Console" button in header (or visit #/admin)
+3. Login with your superuser credentials:
+   Username: dagim
+   Password: YourSecurePassword123
+4. Manage projects, settings, and leads
+
+
+📚 DOCUMENTATION
+────────────────────────────────────────────────────────────────────────────
+- ADMIN_SETUP.md       → Detailed admin setup instructions
+- SETUP_GUIDE.md       → Complete setup and troubleshooting guide
+- ADMIN_CREDENTIALS.txt → Quick credentials reference
+- CHANGES_SUMMARY.md   → All changes and improvements made
+- backend/README.md    → Backend API documentation
+
+
+✨ WHAT'S NEW
+────────────────────────────────────────────────────────────────────────────
+✓ Professional profile image added to home page (mobile responsive)
+✓ Telegram social link integrated (@dagiabyot)
+✓ Navigation bug fixed (querySelector errors resolved)
+✓ Project details modal component created
+✓ All documentation updated
+✓ Admin credentials fully documented
+
+
+🆘 TROUBLESHOOTING
+────────────────────────────────────────────────────────────────────────────
+API Error? → Make sure Django server is running on port 8000
+Profile image missing? → Check /public/profile.png exists
+Admin won't login? → Verify superuser was created with createsuperuser
+Navigation errors? → Clear browser cache and reload
+
+
+📱 RESPONSIVE DESIGN
+────────────────────────────────────────────────────────────────────────────
+✓ All features work on mobile, tablet, and desktop
+✓ Profile image scales beautifully on all screens
+✓ Touch-friendly navigation on mobile devices
+
+
+🔗 SOCIAL LINKS
+────────────────────────────────────────────────────────────────────────────
+- GitHub: https://github.com/dagimabyot/
+- LinkedIn: https://www.linkedin.com/in/dagim-abyot/
+- Twitter: https://twitter.com/dagim_dev
+- Telegram: https://t.me/dagiabyot
+- Email: dagim045@gmail.com
+
+
+================================================================================
+Need more help? Check the detailed documentation files listed above.
+================================================================================
